@@ -22,7 +22,8 @@ class CardFragment : BaseFragment<FragmentCardBinding>(R.layout.fragment_card) {
     }
 
     override fun init() {
-        // requireDataBinding().cardViewPager.adapter = adapter
+        viewModel.getDataFromUrl(requireContext())
+        requireDataBinding().cardViewPager.adapter = adapter
         viewModel.getData()
 
         viewModel.result.observe(viewLifecycleOwner){

@@ -17,10 +17,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.getDataFromUrl()
-
         requireDataBinding().mainEditBtn.setOnClickListener {
             startActivity(Intent(this@MainActivity, EditActivity::class.java))
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.clear()
     }
 }
